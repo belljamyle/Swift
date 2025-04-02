@@ -18,20 +18,18 @@ struct LandmarkRow: View {
             Text(landmark.name)
             
             Spacer()
+            
+            if landmark.isFavorite{
+                Image(systemName: "star.fill")
+                    .foregroundStyle(.yellow)
+            }
         }
     }
 }
 
-#Preview("Turtle Rock") {
-    LandmarkRow(landmark: landmarks[0])
-}
-
-#Preview("Salmon") {
-    LandmarkRow(landmark: landmarks[1])
-}
-
 #Preview { // this only changes what Xcode displays in the canvas
-    Group {
+    let landmarks = ModelData().landmarks
+    return Group {
         LandmarkRow(landmark: landmarks[0])
         LandmarkRow(landmark: landmarks[1])
     }
